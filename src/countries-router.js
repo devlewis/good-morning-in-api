@@ -11,7 +11,5 @@ countriesRouter.route("/all").get((req, res) => {
       "x-rapidapi-key": process.env.COUNTRIES_API_TOKEN,
     }),
   };
-  fetch(options)
-    .then((res) => res.json())
-    .then((responseJson) => console.log(responseJson));
+  fetch(options).then((res) => res.json());
 });
