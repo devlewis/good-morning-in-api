@@ -6,7 +6,6 @@ const helmet = require("helmet");
 const { NODE_ENV } = require("./config");
 const { CLIENT_ORIGIN } = require("./config");
 const app = express();
-const countriesRouter = require("./countries-router");
 const fetch = require("node-fetch");
 const bodyParser = express.json();
 
@@ -34,9 +33,8 @@ app.get("/api/countries/all", (req, res) => {
 });
 
 app.get("/api/country/:country", (req, res) => {
-  console.log(req.params);
   const { country } = req.params;
-  console.log(country);
+
   const url = `https://restcountries-v1.p.rapidapi.com/name/${country}`;
   const options = {
     headers: {
@@ -71,9 +69,7 @@ app.get(
 app.get(
   "/api/countryCapital/:countryCapital/countryCode/:countryCode",
   (req, res) => {
-    console.log(req.params);
     const { countryCapital, countryCode } = req.params;
-    console.log(countryCapital);
     const url =
       "https://maps.googleapis.com/maps/api/geocode/json?address=" +
       countryCapital +
